@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMergeSortAnimations, getQuickSortAnimations, getBubbleSortAnimations } from '/sortingAlgorithms.js';
+import { getMergeSortAnimations, getQuickSortAnimations, getBubbleSortAnimations, getSelectionSortAnimations, getInsertionSortAnimations } from '/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 
 const ANIMATION_SPEED_MS = 1;
@@ -39,6 +39,16 @@ export default class SortingVisualizer extends React.Component {
 
   bubbleSort() {
     const animations = getBubbleSortAnimations(this.state.array);
+    this.animateSorting(animations);
+  }
+
+  selectionSort() {
+    const animations = getSelectionSortAnimations(this.state.array);
+    this.animateSorting(animations);
+  }
+
+  insertionSort() {
+    const animations = getInsertionSortAnimations(this.state.array);
     this.animateSorting(animations);
   }
 
@@ -83,6 +93,8 @@ export default class SortingVisualizer extends React.Component {
         <button onClick={() => this.mergeSort()}>Merge Sort</button>
         <button onClick={() => this.quickSort()}>Quick Sort</button>
         <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+        <button onClick={() => this.selectionSort()}>Selection Sort</button>
+        <button onClick={() => this.insertionSort()}>Insertion Sort</button>
       </div>
     );
   }
